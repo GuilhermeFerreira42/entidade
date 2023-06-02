@@ -1,0 +1,110 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+    <ion-title class="titulo">
+      CLASSCALENDAR
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button class="icone-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="conteudo">
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col size="12" class="agendamento" *ngIf="!showAgendamento">
+      Nenhum agendamento confirmado!
+    </ion-col>
+    <ion-col size="12" class="link" *ngIf="!showAgendamento">
+      <a href="">Agendar monitoria</a>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row class="quadrado-grid">
+      <ion-col class="coluna">
+        <div>
+          <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
+          Aluno
+        </div>
+        <div class="div">
+          <p>Matemática</p>
+          <p>10/05</p>
+        </div>
+        <div class="div2">
+          <ion-buttons>
+            <ion-button fill="solid" expand="block" shape="round" color="success">13:00</ion-button>
+            <ion-button class="menu2" expand="block" fill="clear" (click)="toggleMenu(1)">
+              <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-list class="options" *ngIf="isMenuOpen === 1" lines="none">
+            <ion-item button>
+              <ion-label>Aluno</ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-label>Matemática</ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-label>13:00</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+  
+      <ion-col class="coluna">
+        <div>
+          <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
+          Professor
+        </div>
+        <div class="div">
+          <p>Ciências</p>
+          <p>10/05</p>
+        </div>
+        <div class="div2">
+          <ion-buttons>
+            <ion-button fill="solid" expand="block" shape="round" color="success">14:30</ion-button>
+            <ion-button class="menu2" expand="block" fill="clear" (click)="toggleMenu(2)">
+              <ion-icon name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-list class="options" *ngIf="isMenuOpen === 2" lines="none">
+            <ion-item button>
+              <ion-label>Professor</ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-label>Ciências</ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-label>14:30</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+   <ion-fab class="butao" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="success" size="large" (click)="toggleAgendamento()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer [translucent]="true" class="navebar">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="4" class="icones">
+        <ion-icon name="home" size="large"></ion-icon>
+      </ion-col>
+
+      <ion-col size="4" class="icones">
+        <ion-icon name="calendar" size="large"></ion-icon>
+      </ion-col>
+
+      <ion-col size="4" class="icones">
+        <ion-icon name="chatbubbles" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
