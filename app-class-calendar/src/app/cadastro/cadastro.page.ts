@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CadastroService } from '../api/cadastro.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,7 +15,34 @@ export class CadastroPage implements OnInit {
   turma: any
   cpf: any
   userType : any;
-  constructor() { }
+
+  constructor(private servicePostUsuario:CadastroService) {
+
+   }
+
+   public postAluno() {
+
+    let newObj : any = {
+
+      nome : this.nome,
+      endereco : this.endereco,
+      senha: this.senha,
+      telefone: this.telefone,
+      turma: this.turma,
+      cpf: this.cpf,
+      status: true
+    }
+
+    this.servicePostUsuario.postUsuario(newObj,this.userType).then ((newObj) => {
+      console.log(newObj)
+      this.cpf = ''
+      this.nome = ''
+      this.endereco = ''
+      this.telefone = ''
+      this.turma = ''
+      this.senha = ''
+    })
+   }
 
   ngOnInit() {
   }
