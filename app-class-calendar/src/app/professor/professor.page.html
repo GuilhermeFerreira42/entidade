@@ -25,7 +25,7 @@
         <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
         <p>{{professor.nome}}</p>
         <ion-button size="small" color="warning" (click)="irProfessorDetalhe(professor)">detalhes</ion-button> 
-        <ion-button size="small" color="danger">exclusao</ion-button> 
+        <ion-button size="small" color="danger" (click)="deletarProfessor(professor)">exclusao</ion-button> 
       </ion-item>
     </ion-col>
   </ion-row>
