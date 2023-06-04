@@ -44,6 +44,29 @@ export class CadastroPage implements OnInit {
     })
    }
 
+   public postTecnico(){
+
+    let newObj : any = {
+      nome : this.nome,
+      endereco : this.endereco,
+      senha: this.senha,
+      telefone: this.telefone,
+      cpf: this.cpf,
+      status : true
+
+    }
+
+    this.servicePostUsuario.postUsuario(newObj,this.userType).then ((newObj) => {
+      console.log(newObj)
+      this.cpf = ''
+      this.nome = ''
+      this.endereco = ''
+      this.telefone = ''
+      this.senha = ''
+    })
+   }
+
+
   ngOnInit() {
   }
 

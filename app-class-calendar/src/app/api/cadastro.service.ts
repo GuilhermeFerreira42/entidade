@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CadastroService {
-  public optionsHeader: any = {headers : new HttpHeaders({'Contemt-Type':'application/json;charset=UTF-8'})}
+  public optionsHeader: any = {headers : new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
   public host:string = 'http://localhost:8080/api/';
 
   constructor(private http:HttpClient) { }
