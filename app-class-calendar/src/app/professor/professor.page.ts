@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, NavController } from '@ionic/angular';
+import { BuscaDadosService } from '../api/busca-dados.service';
 
 @Component({
   selector: 'app-professor',
@@ -13,15 +14,24 @@ import { IonicModule, NavController } from '@ionic/angular';
 export class ProfessorPage implements OnInit {
 
   itens : any
-  constructor(private NavCtrl:NavController) { }
-
+  userType: any = 'professor'
+  constructor(private NavCtrl:NavController, private service: BuscaDadosService ) { }
+ 
   public irProfessorDetalhe(professor: any){
     this.NavCtrl.navigateForward('professor-detalhe',{
       queryParams: { professor: professor }
     })
   }
 
-  ngOnInit() {
-  }
+  public getAllDados () {
+    this.service.getAllDados (this.userType + 'es').then(dados=>{
+      this.itens = dados;
+      console.log(this.itens)
+    })
 
+}
+
+ngOnInit() {
+  this.getAllDados()
+}
 }
