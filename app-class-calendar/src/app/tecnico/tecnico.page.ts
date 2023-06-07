@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BuscaDadosService } from '../api/busca-dados.service';
+import { DeletarService } from '../api/deletar.service';
 
 @Component({
   selector: 'app-tecnico',
@@ -11,11 +12,19 @@ export class TecnicoPage implements OnInit {
 
   itens : any
   userType: any = 'tecnico'
-  constructor(private NavCtrl:NavController, private service: BuscaDadosService) { }
+  constructor(private NavCtrl:NavController, private service: BuscaDadosService, private excluirTecnico: DeletarService) { }
 
   public irTecnicoDetalhe(tecnico: any){
     this.NavCtrl.navigateForward('tecnico-detalhe',{
       queryParams: { tecnico: tecnico }
+    })
+  }
+
+  public deletarTecnico(tecnico: any){
+    this.excluirTecnico.deleteUsuarios(this.userType,tecnico.idTecnico).then((tecnico)=>{
+
+      console.log("delete")
+      this.getAllDados();
     })
   }
 
