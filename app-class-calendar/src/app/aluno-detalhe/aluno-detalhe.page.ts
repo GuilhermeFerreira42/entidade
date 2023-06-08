@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AtulizarService } from '../api/atulizar.service';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -17,7 +18,26 @@ export class AlunoDetalhePage implements OnInit {
   telefoneAtt:any
   senhaAtt:any
   status: any
-  constructor(private route:ActivatedRoute) { }
+  userType: any = 'aluno'
+
+  constructor(private route:ActivatedRoute,private atualizar:AtulizarService) { }
+  
+  public atualizaAluno(){
+    let newObj: any ={
+    idAluno:this.idAluno,
+    nome:this.nomeAtt,
+    cpf:this.cpfAtt,
+    turma:this.turmaAtt,
+    endereco:this.enderecoAtt,
+    telefone:this.telefoneAtt,
+    senha:this.senhaAtt
+    }
+
+    this.atualizar.putUsuario(newObj,this.userType).then(dados =>{
+      console.log('Update');
+      console.log(dados);
+    })
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
