@@ -14,8 +14,10 @@ import { DeletarService } from '../api/deletar.service';
 })
 export class ProfessorPage implements OnInit {
 
-  itens : any
+  itens : any = []
+  public usuario:any
   userType: any = 'professor'
+  public button: any
   constructor(private NavCtrl:NavController, private service: BuscaDadosService, private excluirProfessor: DeletarService ) { }
  
   public irProfessorDetalhe(professor: any){
@@ -23,6 +25,8 @@ export class ProfessorPage implements OnInit {
       queryParams: { professor: professor }
     })
   }
+
+  
 
   public deletarProfessor(professor: any){
     this.excluirProfessor.deleteUsuarios(this.userType,professor.idProfessor).then((professor)=>{

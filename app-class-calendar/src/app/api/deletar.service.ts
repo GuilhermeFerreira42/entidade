@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 export class DeletarService {
   public optionsHeader: any = {headers : new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
   public host:string = 'http://localhost:8080/api/';
+  public options: any = { headers: new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
   constructor(private http:HttpClient) { }
 
   public deleteUsuarios (userType: any, id: any){
@@ -21,6 +22,17 @@ export class DeletarService {
       
     });
     
+  }
+
+  public deleteDados(disciplinaType: any,id: any) {
+    this.atualizaHost(disciplinaType, id);
+    return new Promise((ret) => {
+
+      // Requisição DELETE
+      this.http.delete(this.host, this.options).subscribe(dados => {
+        ret(dados);
+      });
+    });
   }
 
   public atualizaHost(disciplinaType: any, id: any) {

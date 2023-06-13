@@ -4,7 +4,7 @@
       <ion-row class="menu-background"></ion-row>
 
       <ion-list class="menu-item" lines="none">
-        <ion-item routerLink="/home">
+        <ion-item (click)="goHome()">
           <ion-icon name="home-outline"></ion-icon>Inicio
         </ion-item>
 
@@ -12,19 +12,19 @@
           <ion-icon name="calendar-outline"></ion-icon>Agendamentos
         </ion-item>
 
-        <ion-item routerLink="/materia">
-          <ion-icon name="book-outline"></ion-icon>Materias
+        <ion-item (click)="goDisciplinas()">
+          <ion-icon name="book-outline"></ion-icon>Adicionar Disciplina
         </ion-item>
 
         <ion-item routerLink="/perfil">
           <ion-icon name="accessibility-outline" ></ion-icon>Perfil
         </ion-item>
 
-        <ion-item routerLink="/professor">
+        <ion-item (click)="goProfessores()">
           <ion-icon name="people-outline"></ion-icon>Professores
         </ion-item>
 
-        <ion-item routerLink="/cadastrobasico">
+        <ion-item (click)="goCadastro()">
           <ion-icon name="people-outline"></ion-icon>Cadastro
         </ion-item>
 

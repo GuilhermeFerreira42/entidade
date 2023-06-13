@@ -57,6 +57,14 @@ const routes: Routes = [
   {
     path: 'tecnico-detalhe',
     loadChildren: () => import('./tecnico-detalhe/tecnico-detalhe.module').then( m => m.TecnicoDetalhePageModule)
+  },
+  {
+    path: 'disciplina',
+    loadChildren: () => import('./disciplina/disciplina.module').then( m => m.DisciplinaPageModule)
+  },
+  {
+    path: 'horario',
+    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule)
   }
 
 

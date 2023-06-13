@@ -20,6 +20,29 @@ export class BuscaDadosService {
       });
     })
   }
+  
+// Materias
+  public getAll(disciplinaType:any){
+    return new Promise((ret) => {
+      this.atualizaHost(disciplinaType)
+      this.http.get(this.host).subscribe(dados => {
+
+        ret(dados);
+
+      });
+    })
+  }
+
+  public getAllHorario(horarioType:any){
+    return new Promise((ret) => {
+      this.atualizaHost(horarioType)
+      this.http.get(this.host).subscribe(dados => {
+
+        ret(dados);
+
+      });
+    })
+  }
 
 
   public atualizaHost(userType: any) {

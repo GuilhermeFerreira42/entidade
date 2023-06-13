@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class CadastroService {
   public optionsHeader: any = {headers : new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
   public host:string = 'http://localhost:8080/api/';
+  public options: any = { headers: new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
 
   constructor(private http:HttpClient) { }
    
@@ -22,6 +23,25 @@ export class CadastroService {
     })
 
   }
+
+  public postMateria(obj: any, disciplinaType:any){
+    this.atualizaHost(disciplinaType)
+    return new Promise((ret) => {
+
+      this.http.post(this.host, JSON.stringify(obj), this.options).subscribe(dados => {
+        ret(dados)
+      });
+      })
+    }
+  public postHorario(obj: any, horarioType:any){
+    this.atualizaHost(horarioType)
+    return new Promise((ret) => {
+  
+      this.http.post(this.host, JSON.stringify(obj), this.options).subscribe(dados => {
+         ret(dados)
+      });
+      })
+       }
 
 
 
