@@ -1,6 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { DadosService } from '../api/dados.service';
+import { BuscaDadosService } from '../api/busca-dados.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class HorarioPage implements OnInit {
   userGroup: any = 'professores';
   itens:any = []
 
-  constructor(private route: ActivatedRoute, private serviceMaterias: DadosService, private service: DadosService, private navCtrl: NavController) { }
+  constructor(private route: ActivatedRoute, private serviceMaterias: BuscaDadosService, private service: BuscaDadosService, private navCtrl: NavController) { }
 
   public getAll(){
     this.serviceMaterias.getAll(this.disciplinaType).then(dados => {
