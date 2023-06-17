@@ -10,6 +10,8 @@ export class BuscaDadosService {
 
   constructor(private http: HttpClient) {  }
 
+
+
   public getAllDados(userType:any){
     return new Promise((ret) => {
       this.atualizaHost(userType)
@@ -44,15 +46,24 @@ export class BuscaDadosService {
     })
   }
 
+  public getAllMonitoria(monitoriaType:any){
+    return new Promise((ret) => {
+      this.atualizaHost(monitoriaType)
+      this.http.get(this.host).subscribe(dados => {
 
-  public atualizaHost(userType: any) {
-    
-    const caminho = '/' + userType;
+        ret(dados);
 
-    if (!this.host.includes(caminho)){
-      const antesString = this.host.lastIndexOf('/');
-      const novoCaminho = this.host.slice(0,antesString);
-      this.host = novoCaminho + caminho;
+      });
+    })
+  }
+
+  public atualizaHost(userType:any){
+    const caminhoTipoUsuario = '/' + userType;
+
+    if (!this.host.includes(caminhoTipoUsuario)) {
+      const indiceBarra = this.host.lastIndexOf('/');
+      const caminhoSemBarra = this.host.slice(0, indiceBarra);
+      this.host = caminhoSemBarra + caminhoTipoUsuario;
     }
   }
 }

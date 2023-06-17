@@ -4,25 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
-
 export class DeletarService {
-  public optionsHeader: any = {headers : new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
-  public host:string = 'http://localhost:8080/api/';
+
+  public host: string = 'http://localhost:8080/api/';
   public options: any = { headers: new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
-  constructor(private http:HttpClient) { }
 
-  public deleteUsuarios (userType: any, id: any){
-    this.atualizaHost(userType, id);
-    return new Promise((ret) => {
-
-      this.http.delete(this.host,this.optionsHeader).subscribe (dados=>{
-        ret(dados);
-      });
-      
-    });
-    
-  }
+  constructor(private http: HttpClient) { }
 
   public deleteDados(disciplinaType: any,id: any) {
     this.atualizaHost(disciplinaType, id);
@@ -35,8 +22,20 @@ export class DeletarService {
     });
   }
 
-  public atualizaHost(disciplinaType: any, id: any) {
-    const userTypePath = '/' + disciplinaType;
+  public deleteUsuarios(userGroup: any,id: any) {
+    this.atualizaHost(userGroup, id);
+    return new Promise((ret) => {
+
+      // Requisição DELETE
+      this.http.delete(this.host, this.options).subscribe(dados => {
+        ret(dados);
+      });
+    });
+  }
+
+
+  public atualizaHost(userGroup: any, id: any) {
+    const userTypePath = '/' + userGroup;
     const idPath = '/' + id;
 
     if (!this.host.includes(userTypePath)) {
@@ -50,5 +49,5 @@ export class DeletarService {
       this.host = this.host.replace(/\/\d+(\/)?$/, '');
       this.host += idPath;
     }
-  }
+  } 
 }

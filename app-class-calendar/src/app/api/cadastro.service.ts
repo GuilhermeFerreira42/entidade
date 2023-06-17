@@ -43,16 +43,25 @@ export class CadastroService {
       })
        }
 
+  
+       public postAgendamento(obj: any, monitoriaType:any){
+      this.atualizaHost(monitoriaType)
+      return new Promise((ret) => {
 
+        this.http.post(this.host, JSON.stringify(obj), this.options).subscribe(dados => {
+          ret(dados)
+        });
+        })
+      }
 
-  public atualizaHost(userType: any) {
-    
-    const caminho = '/' + userType;
+  public atualizaHost(userGroup:any){
+      const caminho = '/' + userGroup 
 
-    if (!this.host.includes(caminho)){
-      const antesString = this.host.lastIndexOf('/');
-      const novoCaminho = this.host.slice(0,antesString);
-      this.host = novoCaminho + caminho;
+      if (!this.host.includes(caminho)) {
+        const indiceBarra = this.host.lastIndexOf('/');
+        const caminhoSemBarra = this.host.slice(0, indiceBarra);
+        this.host = caminhoSemBarra + caminho;
+      }
     }
-  }
+
 }
