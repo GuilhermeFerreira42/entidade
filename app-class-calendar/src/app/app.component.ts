@@ -22,21 +22,21 @@ export class AppComponent {
   }
 
   goAlunos(){
-    this.navCtrl.navigateForward('dados-aluno', {
+    this.navCtrl.navigateForward('aluno', {
       queryParams: { usuario: this.usuario,
                     userType: this.userType}
     });
   }
 
   goTecnicos(){
-    this.navCtrl.navigateForward('dados-tecnico', {
+    this.navCtrl.navigateForward('tecnico', {
       queryParams: { usuario: this.usuario,
                     userType: this.userType}
     });
   }
 
   goProfessores() {
-    this.navCtrl.navigateForward('dados-professor', {
+    this.navCtrl.navigateForward('professor', {
       queryParams: { button: 'professores',
                     usuario: this.usuario,
                     userType: this.userType }
@@ -44,7 +44,7 @@ export class AppComponent {
   }
 
   goDisciplinas() {
-    this.navCtrl.navigateForward('dados-professor', {
+    this.navCtrl.navigateForward('professor', {
       queryParams: { button: 'disciplinas',
                     usuario: this.usuario,
                     userType: this.userType }

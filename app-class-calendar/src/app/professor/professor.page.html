@@ -12,14 +12,8 @@
 
 <!-- conteudo do centro -->
 <ion-content class="conteudo">
-  <ion-row>
-  <ion-col></ion-col>
-  <ion-col size="12" class="agendamento">
-    Selecione o professor desejado:
-  </ion-col>
-</ion-row>
 
-<ion-grid>
+<ion-grid *ngIf="button == 'professores' ">
   <ion-row class="quadrado-grid">
     <ion-col *ngFor="let professor of itens; let ix = index">
       <ion-item class="itemEstilo">
@@ -32,6 +26,17 @@
   </ion-row>
 </ion-grid>
 
+<ion-grid *ngIf="button == 'disciplinas' ">
+  <ion-row class="quadrado-grid">
+    <ion-col *ngFor="let professor of itens; let ix = index">
+      <ion-item class="itemEstilo">
+        <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
+        <p>{{professor.nome}}</p>
+        <ion-button size="small" color="warning" (click)="irDisciplina(professor)">detalhes</ion-button> 
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
    <!-- botao de atualizar a pagina <ion-button>Atualizar</ion-button> -->
 
 </ion-content>
