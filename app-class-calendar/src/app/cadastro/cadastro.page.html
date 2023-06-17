@@ -9,14 +9,14 @@
   <ion-row class="ion-justify-content-center">
     <ion-item>
       <ion-label>Selecione o tipo:</ion-label>
-      <ion-select [(ngModel)]="userType">
+      <ion-select [(ngModel)]="userGroup">
         <ion-select-option value="professor">Professor</ion-select-option>
         <ion-select-option value="tecnico">Técnico</ion-select-option>
         <ion-select-option value="aluno">Aluno</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-row>
-  <ion-grid class="ion" *ngIf="userType == 'aluno'">
+  <ion-grid class="ion" *ngIf="userGroup == 'aluno'">
 
     <ion-row>
       <ion-col>
@@ -80,7 +80,7 @@
 
   </ion-grid>
 
-  <ion-grid class="ion" *ngIf="userType == 'tecnico'">
+  <ion-grid class="ion" *ngIf="userGroup == 'tecnico'">
 
     <ion-row>
       <ion-col>
@@ -135,7 +135,7 @@
 
   </ion-grid>
 
-  <ion-grid class="ion" *ngIf="userType == 'professor'">
+  <ion-grid class="ion" *ngIf="userGroup == 'professor'">
 
     <ion-row>
       <ion-col>

@@ -14,7 +14,7 @@ export class CadastroPage implements OnInit {
   telefone: any
   turma: any
   cpf: any
-  userType : any;
+  userGroup : any;
 
   constructor(private servicePostUsuario:CadastroService) {
 
@@ -33,7 +33,7 @@ export class CadastroPage implements OnInit {
       status: true
     }
 
-    this.servicePostUsuario.postUsuario(newObj,this.userType).then ((newObj) => {
+    this.servicePostUsuario.postUsuario(newObj,this.userGroup).then ((newObj) => {
       console.log(newObj)
       this.cpf = ''
       this.nome = ''
@@ -56,7 +56,7 @@ export class CadastroPage implements OnInit {
 
     }
 
-    this.servicePostUsuario.postUsuario(newObj,this.userType).then ((newObj) => {
+    this.servicePostUsuario.postUsuario(newObj,this.userGroup).then ((newObj) => {
       console.log(newObj)
       this.cpf = ''
       this.nome = ''
@@ -78,7 +78,7 @@ export class CadastroPage implements OnInit {
 
     }
 
-    this.servicePostUsuario.postUsuario(newObj,this.userType).then ((newObj) => {
+    this.servicePostUsuario.postUsuario(newObj,this.userGroup).then ((newObj) => {
       console.log(newObj)
       this.cpf = ''
       this.nome = ''

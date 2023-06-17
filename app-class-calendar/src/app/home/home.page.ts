@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IonicModule, NavController } from '@ionic/angular';
 
 @Component({
@@ -10,22 +11,15 @@ export class HomePage {
   showAgendamento: boolean = true;
   isMenuOpen: number = 0;
 
-  constructor(private navCtrl: NavController) {}
+  public usuario : any;
+  public userType: any;
 
-  goPerfil(){
-    this.navCtrl.navigateForward('perfil')
-    
-  }
-  toggleAgendamento() {
-    this.showAgendamento = !this.showAgendamento;
-  }
+  constructor(private navCtrl: NavController, private route : ActivatedRoute) {}
 
-  toggleMenu(coluna: number) {
-    if (this.isMenuOpen === coluna) {
-      this.isMenuOpen = 0;
-    } else {
-      this.isMenuOpen = coluna;
-    }
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.userType = params['userType']});
   }
 }
 
