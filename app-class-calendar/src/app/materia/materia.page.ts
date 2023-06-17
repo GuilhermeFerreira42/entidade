@@ -100,11 +100,11 @@ export class MateriaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getAll();
     this.route.queryParams.subscribe(params => {
       this.materia = params['materia'];
       this.usuario = params['usuario'];
       this.userType = params['userType'];
-      this.getAll();
     });
   }
 }
