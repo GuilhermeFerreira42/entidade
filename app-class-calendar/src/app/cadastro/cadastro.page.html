@@ -1,23 +1,23 @@
 <ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">CADASTRO</h1>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <h1 class="ion-text-center">CADASTRO</h1>
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-justify-content-center">
-    <ion-item>
-      <ion-label>Selecione o tipo:</ion-label>
-      <ion-select [(ngModel)]="userGroup">
-        <ion-select-option value="professor">Professor</ion-select-option>
-        <ion-select-option value="tecnico">Técnico</ion-select-option>
-        <ion-select-option value="aluno">Aluno</ion-select-option>
-      </ion-select>
+    <ion-row class="ion-justify-content-center">
+      <ion-item color="light" class="ion-text-center ion-margin itemDesign">
+        <ion-select [(ngModel)]="userGroup" ion-select aria-label="Fruit" interface="popover" placeholder="Selecione seu perfil">
+          <ion-select-option value="professor">Professor</ion-select-option>
+          <ion-select-option value="tecnico">Técnico</ion-select-option>
+          <ion-select-option value="aluno">Aluno</ion-select-option>
+        </ion-select>
     </ion-item>
   </ion-row>
-  <ion-grid class="ion" *ngIf="userGroup == 'aluno'">
+  </ion-grid>
 
+  <ion-grid *ngIf="userGroup == 'aluno'">
     <ion-row>
       <ion-col>
         <ion-label >
@@ -44,7 +44,6 @@
         </ion-label>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col>
         <ion-label>
@@ -73,14 +72,14 @@
     </ion-row>
 
     <ion-row>
-      <ion-col class="ion-text-center button">
-        <ion-button class="button" (click)="postAluno()" size="default" expand="full" type="submit"> Cadastrar </ion-button>
+      <ion-col class="ion-text-center">
+        <ion-button (click)="postAluno()" size="default" expand="full" type="submit"> Cadastrar </ion-button>
       </ion-col>
     </ion-row>
 
   </ion-grid>
 
-  <ion-grid class="ion" *ngIf="userGroup == 'tecnico'">
+  <ion-grid *ngIf="userGroup == 'tecnico'">
 
     <ion-row>
       <ion-col>
@@ -128,15 +127,14 @@
     </ion-row>
 
     <ion-row>
-      <ion-col class="ion-text-center button">
-        <ion-button class="button"(click)='postTecnico()' size="default" expand="full" type="submit"> Cadastrar </ion-button>
+      <ion-col class="ion-text-center">
+        <ion-button (click)='postTecnico()' size="default" expand="full" type="submit"> Cadastrar </ion-button>
       </ion-col>
     </ion-row>
 
   </ion-grid>
 
-  <ion-grid class="ion" *ngIf="userGroup == 'professor'">
-
+  <ion-grid *ngIf="userGroup == 'professor'">
     <ion-row>
       <ion-col>
         <ion-label >
@@ -154,7 +152,6 @@
         </ion-label>
       </ion-col>
     </ion-row>
-
 
     <ion-row>
       <ion-col>
@@ -184,11 +181,11 @@
     </ion-row>
 
     <ion-row>
-      <ion-col class="ion-text-center button">
-        <ion-button class="button" (click) = "postProfessor()" size="default" expand="full" type="submit"> Cadastrar </ion-button>
+      <ion-col class="ion-text-center">
+        <ion-button  (click) = "postProfessor()" size="default" expand="full" type="submit"> Cadastrar </ion-button>
       </ion-col>
     </ion-row>
-
   </ion-grid>
+
   
 </ion-content>

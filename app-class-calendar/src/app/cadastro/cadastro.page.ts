@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastroService } from '../api/cadastro.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro',
