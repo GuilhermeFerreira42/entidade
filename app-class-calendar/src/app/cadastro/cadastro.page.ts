@@ -17,7 +17,7 @@ export class CadastroPage implements OnInit {
   cpf: any
   userGroup : any;
 
-  constructor(private servicePostUsuario:CadastroService) {
+  constructor(private servicePostUsuario:CadastroService, private alertController: AlertController ) {
 
    }
 
@@ -45,27 +45,31 @@ export class CadastroPage implements OnInit {
     })
    }
 
-   public postTecnico(){
-
-    let newObj : any = {
-      nome : this.nome,
-      endereco : this.endereco,
+   public async postTecnico() {
+    if (!this.nome || !this.endereco || !this.senha || !this.telefone || !this.cpf) {
+      // Verifica se algum campo está em branco
+     await this.exibirAlerta("Preencher todos os campos !")
+      return;
+    }
+  
+    let newObj: any = {
+      nome: this.nome,
+      endereco: this.endereco,
       senha: this.senha,
       telefone: this.telefone,
       cpf: this.cpf,
-      status : true
-
-    }
-
-    this.servicePostUsuario.postUsuario(newObj,this.userGroup).then ((newObj) => {
-      console.log(newObj)
-      this.cpf = ''
-      this.nome = ''
-      this.endereco = ''
-      this.telefone = ''
-      this.senha = ''
-    })
-   }
+      status: true
+    };
+  
+    this.servicePostUsuario.postUsuario(newObj, this.userGroup).then((newObj) => {
+      console.log(newObj);
+      this.cpf = '';
+      this.nome = '';
+      this.endereco = '';
+      this.telefone = '';
+      this.senha = '';
+    });
+  }
 
    public postProfessor(){
 
@@ -89,6 +93,15 @@ export class CadastroPage implements OnInit {
     })
    }
 
+   async exibirAlerta (mensagem: string){
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: mensagem,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
   ngOnInit() {
   }
 

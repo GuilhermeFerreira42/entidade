@@ -26,7 +26,7 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .header{
-    --ion-background-color: rgb(56, 236, 86);
+    --ion-background-color: #66008B;
 }
 
 
@@ -34,14 +34,10 @@
     font-size: 25px;
 }
 
-.grid {
-    margin: 20px;
-}
-
 .button {
     margin: 20px;
     font-size: 18px;
-    --ion-background-color: rgb(56, 236, 86);
+    --ion-background-color:  #66008B;
     text-align: center;
 }
 
@@ -49,14 +45,14 @@
     font-size: 80px;
     display: flex;
     justify-content: center;
-    color: rgb(3, 199, 3);
+    color:  #66008B;
 }
 
 .navebar {
     font-size: 28px;
     color: white;
     text-align: center;
-    --ion-background-color: rgb(56, 236, 86);
+    --ion-background-color:  #66008B;
     }
 
 .butao {
@@ -70,20 +66,4 @@
     font-size: 35px;
     color: #ffffff;
     }
-}
-
-.icones {
-    text-align: center;
-    color: whitesmoke;
-}
-
-
-.header{
-    background-color: rgb(6, 221, 17);
-    font-size: 28px;
-    text-align: center;
-    color: white;
-}
-.teste {
-    color: #000000
 }

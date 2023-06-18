@@ -5,54 +5,63 @@
     </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button class="icone-menu"></ion-menu-button>
-      <ion-button slot="end" color="success" (click)="getAllDados()">Atualizar</ion-button>
+      
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <!-- conteudo do centro -->
 <ion-content class="conteudo">
+  <ion-row>
+  <ion-col></ion-col>
+  <ion-col size="12" class="agendamento">
+    Selecione o professor desejado:
+  </ion-col>
+</ion-row>
 
-<ion-grid *ngIf="button == 'professores' ">
+<ion-grid>
   <ion-row class="quadrado-grid">
     <ion-col *ngFor="let professor of itens; let ix = index">
-      <ion-item class="itemEstilo">
+      <ion-item lines="none" class="itemEstilo">
         <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
         <p>{{professor.nome}}</p>
-        <ion-button size="small" color="warning" (click)="irProfessorDetalhe(professor)">detalhes</ion-button> 
-        <ion-button size="small" color="danger" (click)="deletarProfessor(professor)">exclusao</ion-button> 
+        <ion-grid class="end">
+        <ion-button  size="small" color="warning" (click)="irProfessorDetalhe(professor)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
+        <ion-button  size="small" color="danger" (click)="deletarProfessor(professor)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
+        </ion-grid>
       </ion-item>
     </ion-col>
   </ion-row>
 </ion-grid>
 
-<ion-grid *ngIf="button == 'disciplinas' ">
-  <ion-row class="quadrado-grid">
-    <ion-col *ngFor="let professor of itens; let ix = index">
-      <ion-item class="itemEstilo">
-        <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
-        <p>{{professor.nome}}</p>
-        <ion-button size="small" color="success" (click)="irDisciplina(professor)">Adicionar matéria</ion-button> 
-      </ion-item>
-    </ion-col>
-  </ion-row>
-</ion-grid>
    <!-- botao de atualizar a pagina <ion-button>Atualizar</ion-button> -->
+
+   <ion-fab class="butao" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="tertiary" (click)="getAllDados()">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-alert trigger="formulario-ajuda" header="Formulário de Suporte" 
+        >
+      </ion-alert>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 
 <!-- botoes de baixo -->
-<ion-footer [translucent]="true" class="navebar" *ngIf="userType == 'tecnico'">
+<ion-footer [translucent]="true" class="navebar">
   <ion-toolbar>
     <ion-row>
-      <ion-col size="6" class="icones">
-        <ion-icon (click)="goHome()" name="home"></ion-icon>
+      <ion-col size="4" class="icones">
+        <ion-icon name="home" size="large"></ion-icon>
       </ion-col>
 
-      <ion-col size="6" class="icones">
-        <ion-icon (click)="goPerfil()" name="person" size="lar"></ion-icon>
+      <ion-col size="4" class="icones">
+        <ion-icon name="calendar" size="large"></ion-icon>
+      </ion-col>
+
+      <ion-col size="4" class="icones">
+        <ion-icon name="chatbubbles" size="large"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-footer>
-
