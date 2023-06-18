@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { BuscaDadosService } from '../api/busca-dados.service';
 import { DeletarService } from '../api/deletar.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tecnico',
@@ -10,18 +11,32 @@ import { DeletarService } from '../api/deletar.service';
 })
 export class TecnicoPage implements OnInit {
 
-  itens : any
-  userType: any = 'tecnico'
-  constructor(private NavCtrl:NavController, private service: BuscaDadosService, private excluirTecnico: DeletarService) { }
+  itens : any = []
+  public usuario: any
+  public userType:any
+  userGroup:any = 'tecnico'
+  constructor(private NavCtrl:NavController,private alertController: AlertController, private route: ActivatedRoute, private service: BuscaDadosService, private excluirTecnico: DeletarService) { }
 
   public irTecnicoDetalhe(tecnico: any){
     this.NavCtrl.navigateForward('tecnico-detalhe',{
-      queryParams: { tecnico: tecnico }
+      queryParams: { tecnico: tecnico, 
+        usuario: this.usuario,
+        userType: this.userType }
     })
   }
+  async exibirAlerta (mensagem: string){
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: mensagem,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
 
-  public deletarTecnico(tecnico: any){
-    this.excluirTecnico.deleteUsuarios(this.userType,tecnico.idTecnico).then((tecnico)=>{
+  public async deletarTecnico(tecnico: any){
+    await this.exibirAlerta(tecnico.nome +' excluido, por favor, atualize a pagina');
+    this.excluirTecnico.deleteUsuarios(this.userGroup,tecnico.idTecnico).then((tecnico)=>{
 
       console.log("delete")
       this.getAllDados();
@@ -29,7 +44,7 @@ export class TecnicoPage implements OnInit {
   }
 
   public getAllDados () {
-    this.service.getAllDados (this.userType + 's').then(dados=>{
+    this.service.getAllDados (this.userGroup + 's').then(dados=>{
       this.itens = dados;
       console.log(this.itens)
     })
@@ -38,6 +53,20 @@ export class TecnicoPage implements OnInit {
 
   ngOnInit() {
     this.getAllDados()
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.userType = params['userType']});}
+
+  goPerfil(){
+    this.NavCtrl.navigateForward('perfil', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
   }
 
-}
+  goHome(){
+    this.NavCtrl.navigateForward('home', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }}

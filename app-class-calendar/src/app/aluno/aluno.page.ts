@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { BuscaDadosService } from '../api/busca-dados.service';
 import { DeletarService } from '../api/deletar.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-aluno',
@@ -10,9 +11,12 @@ import { DeletarService } from '../api/deletar.service';
 })
 export class AlunoPage implements OnInit {
 
-  itens : any
-  userType: any = 'aluno'
-  constructor(private NavCtrl:NavController, private service: BuscaDadosService, private excluirALuno: DeletarService ) { }
+  itens : any = []
+  public usuario: any
+  public userType:any
+  userGroup:any = 'aluno'
+
+  constructor(private route: ActivatedRoute, private alertController: AlertController, private NavCtrl:NavController, private service: BuscaDadosService, private excluirALuno: DeletarService ) { }
 
   public irAlunoDetalhe(aluno: any){
     this.NavCtrl.navigateForward('aluno-detalhe',{
@@ -20,8 +24,9 @@ export class AlunoPage implements OnInit {
     })
   }
   
-  public excluirAluno(aluno: any){
-    this.excluirALuno.deleteUsuarios(this.userType,aluno.idAluno).then((aluno)=>{
+  public async excluirAluno(aluno: any){
+    await this.exibirAlerta(aluno.nome +' excluido, por favor, atualize a pagina');
+    this.excluirALuno.deleteUsuarios(this.userGroup,aluno.idAluno).then((aluno)=>{
 
       console.log("delete")
       this.getAllDados();
@@ -29,16 +34,41 @@ export class AlunoPage implements OnInit {
 
   }
 public getAllDados () {
-  this.service.getAllDados (this.userType + 's').then(dados=>{
+  this.service.getAllDados (this.userGroup + 's').then(dados=>{
     this.itens = dados;
     console.log(this.itens)
   })
 
 }
 
+async exibirAlerta (mensagem: string){
+  const alert = await this.alertController.create({
+    header: 'Alerta',
+    message: mensagem,
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
 
   ngOnInit() {
     this.getAllDados()
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.userType = params['userType']});
+  }
+  goHome(){
+    this.NavCtrl.navigateForward('home', {
+      queryParams:  { usuario: this.usuario,
+                    userType: this.userType }
+    });
   }
 
+  goPerfil(){
+    this.NavCtrl.navigateForward('perfil', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }
 }

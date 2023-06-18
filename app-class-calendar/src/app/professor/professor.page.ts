@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
+import { AlertController, IonicModule, NavController } from '@ionic/angular';
 import { BuscaDadosService } from '../api/busca-dados.service';
 import { DeletarService } from '../api/deletar.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ export class ProfessorPage implements OnInit {
   public button: any
   public userType: any
 
-  constructor(private NavCtrl:NavController, private service: BuscaDadosService, private excluirProfessor: DeletarService, private route:ActivatedRoute ) { }
+  constructor(private NavCtrl:NavController, private alertController: AlertController, private service: BuscaDadosService, private excluirProfessor: DeletarService, private route:ActivatedRoute ) { }
  
   public irProfessorDetalhe(professor: any){
     this.NavCtrl.navigateForward('professor-detalhe',{
@@ -29,9 +29,19 @@ export class ProfessorPage implements OnInit {
     })
   }
 
+  async exibirAlerta (mensagem: string){
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: mensagem,
+      buttons: ['OK']
+    });
   
+    await alert.present();
+  }
 
-  public deletarProfessor(professor: any){
+
+  public async deletarProfessor(professor: any){
+    await this.exibirAlerta(professor.nome +' excluido, por favor, atualize a pagina');
     this.excluirProfessor.deleteUsuarios(this.userGroup,professor.idProfessor).then((professor)=>{
 
       console.log("delete")
@@ -61,4 +71,16 @@ ngOnInit() {
     this.button = params ['button']
   });
 }
+goHome(){
+  this.NavCtrl.navigateForward('home', {
+    queryParams:  { usuario: this.usuario,
+                  userType: this.userType }
+  });
 }
+
+goPerfil(){
+  this.NavCtrl.navigateForward('perfil', {
+    queryParams: { usuario: this.usuario,
+                   userType: this.userType }
+  });
+}}

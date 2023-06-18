@@ -146,6 +146,39 @@ export class HomePage {
 
     await alert.present();
   }
+  
+  async goExit() {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: 'Tem certeza que deseja sair?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        }, {
+          text: 'Sair',
+          handler: () => {
+            this.navCtrl.navigateForward('login')
+          }
+        }
+      ]
+    });
+      await alert.present();
+  }
+
+  goPerfil(){
+    this.navCtrl.navigateForward('perfil', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }
+
+  goAgendamento(){
+    this.navCtrl.navigateForward('agendamento', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }
 
   ngOnInit() {
       this.getAlldados()
