@@ -25,7 +25,7 @@ export class HomePage {
 
   constructor(private navCtrl: NavController, private route : ActivatedRoute, private service : BuscaDadosService, private alertController: AlertController, private modificar: AtulizarService) {}
 
-  public getAlldados (){
+  public getAlldados(){
     this.service.getAllMonitoria(this.monitoriaType+'s').then(dados=>{
       this.items=dados;
     })
@@ -137,6 +137,12 @@ export class HomePage {
     });
   }
 
+  goHome(){
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.userType = params['userType']});
+  }
+  
   async exibirAlerta (mensagem: string){
     const alert = await this.alertController.create({
       header: 'Alerta',

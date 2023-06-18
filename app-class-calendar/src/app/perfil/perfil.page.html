@@ -1,85 +1,160 @@
-<ion-header [translucent]="true" class="header">
-  <ion-toolbar>
-    <ion-title class="titulo">
-      PERFIL
-    </ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-menu-button class="icone-menu"></ion-menu-button>
+      <ion-back-button text="Voltar"></ion-back-button>
     </ion-buttons>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col class="icon-perfil">
-        <ion-icon name="people-circle-outline"></ion-icon>
-      </ion-col>
+<ion-content [fullscreen]="true">
+  <ion-grid *ngIf="userType === 'aluno'" class="ion-text-center">
+    <ion-row class="ion-justify-content-center">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-icon name="person-circle-outline" style="font-size: 32px;"></ion-icon>
+        </ion-avatar>
+      </ion-item>
     </ion-row>
 
-    <ion-row>
-      <ion-col class="ion-text-center">
-        Aluno
-      </ion-col>
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Nome: {{usuario.nome}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>CPF: {{usuario.cpf}}</ion-label>
+      </ion-item>  
+    </ion-row>  
+      
+    <ion-row class="ion-justify-content-center">
+     <ion-item class="ion-text ion-text-large">
+        <ion-label>Turma: {{usuario.turma}}</ion-label>
+      </ion-item> 
+    </ion-row>
+      
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Telefone: {{formatarTelefone(usuario.telefone)}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Endereço: {{usuario.endereco}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Senha: {{usuario.senha}}</ion-label>
+      </ion-item>
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="grid" *ngFor="let dado of dados;">
-    <ion-col>
+  <ion-grid *ngIf="userType === 'professor'" class="ion-justify-content-center">
+    <ion-row class="ion-justify-content-center">
       <ion-item>
-        Nome: {{dado.nome}}
+        <ion-avatar slot="start">
+          <ion-icon name="person-circle-outline" style="font-size: 32px;"></ion-icon>
+        </ion-avatar>
       </ion-item>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
-      <ion-item>
-        CPF: {{dado.cpf}}
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Nome: {{usuario.nome}}</ion-label>
       </ion-item>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
-      <ion-item>
-        Turma: {{dado.turma}}
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>CPF: {{usuario.cpf}}</ion-label>
+      </ion-item>  
+    </ion-row>  
+         
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Telefone: {{formatarTelefone(usuario.telefone)}}</ion-label>
       </ion-item>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
-      <ion-item>
-        Telefone: {{dado.telefone}}
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Endereço: {{usuario.endereco}}</ion-label>
       </ion-item>
-    </ion-col>
+    </ion-row>
 
-    <ion-col>
-      <ion-item>
-        Endereço: {{dado.endereco}}
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Senha: {{usuario.senha}}</ion-label>
       </ion-item>
-    </ion-col>
+    </ion-row>
   </ion-grid>
 
-  <ion-fab class="butao" slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="success" id="formulario-ajuda" size="large">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      <ion-alert trigger="formulario-ajuda" header="Formulário de Suporte" [buttons]="alertButtons"
-        [inputs]="alertInputs">
-      </ion-alert>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-grid *ngIf="userType === 'tecnico'" class="ion-justify-content-center">
+    <ion-row class="ion-justify-content-center">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-icon name="person-circle-outline" style="font-size: 32px;"></ion-icon>
+        </ion-avatar>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Nome: {{usuario.nome}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>CPF: {{usuario.cpf}}</ion-label>
+      </ion-item>  
+    </ion-row>  
+      
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Telefone: {{formatarTelefone(usuario.telefone)}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Endereço: {{usuario.endereco}}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-item class="ion-text ion-text-large">
+        <ion-label>Senha: {{usuario.senha}}</ion-label>
+      </ion-item>
+    </ion-row>
+  </ion-grid>                 
 </ion-content>
 
-<ion-footer [translucent]="true">
-  <ion-toolbar class="navebar">
+<ion-footer [translucent]="true" class="navebar" *ngIf="userType == 'aluno'">
+  <ion-toolbar>
     <ion-row>
-      <ion-col size="4" class="icones">
-        <ion-icon name="home" size="large" (click)="goHome()"></ion-icon>
+      <ion-col size="6" class="icones">
+        <ion-icon (click)="goHome()" name="home"></ion-icon>
       </ion-col>
+      
+      <ion-col size="6" class="icones">
+        <ion-icon (click)="goAgendamento()" name="calendar" size="large"></ion-icon>
+      </ion-col>    
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
 
-      <ion-col size="4" class="icones">
-        <ion-icon name="calendar" size="large"></ion-icon>
-      </ion-col>
-
-      <ion-col size="4" class="icones">
-        <ion-icon name="chatbubbles" size="large"></ion-icon>
-      </ion-col>
+<ion-footer [translucent]="true" class="navebar" *ngIf="userType == 'professor'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="12" class="icones">
+        <ion-icon (click)="goHome()" name="home"></ion-icon>
+      </ion-col>    
     </ion-row>
   </ion-toolbar>
 </ion-footer>

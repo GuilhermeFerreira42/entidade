@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -12,52 +13,42 @@ import { IonicModule, NavController } from '@ionic/angular';
 })
 export class PerfilPage implements OnInit {
 
-  public dados = [{
-    nome: 'Carls',
-    cpf: 1111111111 - 1,
-    turma: '3°A',
-    telefone: '999999999',
-    endereco: 'Rua Carls Varls Charls',
-    senha: '**********'
-  }]
+  public usuario:any
+  public userType:any
+  
+  constructor(private navCtrl: NavController, private route: ActivatedRoute) { }
 
-  public alertButtons = ['Enviar'];
-  public alertInputs = [
-    {
-      type: 'string',
-      placeholder: 'Nome Completo',
-      attributes: {
-        maxlength: 100,
-      },
-    },
-    {
-      placeholder: 'Celular',
-      attributes: {
-        minlength: 11,
-        maxlength: 11,
-      },
-    },
-    {
-      type: 'email',
-      placeholder: 'Email',
-      min: 1,
-      max: 100,
-    },
-    {
-      type: 'textarea',
-      placeholder: 'Descrição da solicitação',
-    },
-  ];
 
-  constructor(private navCtrl: NavController) { }
+
+  public formatarTelefone(telefoneNumerico:any) {
+    const telefoneString = telefoneNumerico.toString();
+  
+    const ddd = telefoneString.substring(0, 2);
+    const primeiroBloco = telefoneString.substring(2, 7);
+    const segundoBloco = telefoneString.substring(7);
+  
+    return `(${ddd}) ${primeiroBloco}-${segundoBloco}`;
+  }
+
+  goHome(){
+    this.navCtrl.navigateForward('home', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }
+
+  goAgendamento(){
+    this.navCtrl.navigateForward('agendamento', {
+      queryParams: { usuario: this.usuario,
+                     userType: this.userType }
+    });
+  }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+      this.userType = params['userType']});
   }
-
-  goHome() {
-    this.navCtrl.navigateBack('home')
-  }
-
 }
 
 
