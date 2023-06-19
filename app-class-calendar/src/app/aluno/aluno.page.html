@@ -6,6 +6,9 @@
     <ion-buttons>
       <ion-menu-button slot="start" class="icone-menu"></ion-menu-button>
     </ion-buttons>
+    <ion-button slot="end" shape="round" (click)="getAllDados()">
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -25,23 +28,13 @@
         <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
         <p>{{aluno.nome}}</p>
         <ion-grid class="end">
-        <ion-button size="small" color="warning" (click)="irAlunoDetalhe(aluno)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
+        <ion-button size="small" class="second-icon" (click)="irAlunoDetalhe(aluno)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
         <ion-button size="small" color="danger" (click)="excluirAluno(aluno)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
       </ion-grid>
       </ion-item>
     </ion-col>
   </ion-row>
 </ion-grid>
-   <!-- botao de atualizar a pagina <ion-button>Atualizar</ion-button> -->
-
-   <ion-fab class="butao" slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="tertiary" (click)="getAllDados()">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      <ion-alert trigger="formulario-ajuda" header="Formulário de Suporte" 
-        >
-      </ion-alert>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
 
 <!-- botoes de baixo -->
