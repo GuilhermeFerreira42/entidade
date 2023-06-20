@@ -21,7 +21,13 @@ export class CadastroPage implements OnInit {
 
    }
 
-   public postAluno() {
+   public  async postAluno() {
+    if(!this.nome || !this.endereco || !this.senha || !this.telefone || !this.cpf || !this.turma){
+      // Verifica se algum campo está em branco
+     await this.exibirAlerta("Preencher todos os campos !")
+       return;
+
+    }
 
     let newObj : any = {
 
@@ -71,7 +77,13 @@ export class CadastroPage implements OnInit {
     });
   }
 
-   public postProfessor(){
+   public async postProfessor(){
+    
+    if(!this.nome || !this.endereco || !this.senha || !this.telefone || !this.cpf){
+       // Verifica se algum campo está em branco
+     await this.exibirAlerta("Preencher todos os campos !")
+      return;
+    }
 
     let newObj : any = {
       nome : this.nome,
