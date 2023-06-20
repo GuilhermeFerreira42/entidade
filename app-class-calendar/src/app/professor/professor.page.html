@@ -19,7 +19,7 @@
   </ion-col>
 </ion-row>
 
-<ion-grid>
+<ion-grid *ngIf="button == 'professores' ">
   <ion-row class="quadrado-grid">
     <ion-col *ngFor="let professor of itens; let ix = index">
       <ion-item lines="none" class="itemEstilo">
@@ -29,6 +29,18 @@
         <ion-button  size="small" color="warning" (click)="irProfessorDetalhe(professor)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
         <ion-button  size="small" color="danger" (click)="deletarProfessor(professor)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
         </ion-grid>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf="button == 'disciplinas' ">
+  <ion-row class="quadrado-grid">
+    <ion-col *ngFor="let professor of itens; let ix = index">
+      <ion-item class="itemEstilo">
+        <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
+        <p>{{professor.nome}}</p>
+        <ion-button size="small" color="success" (click)="irDisciplina(professor)">Adicionar matéria</ion-button> 
       </ion-item>
     </ion-col>
   </ion-row>
