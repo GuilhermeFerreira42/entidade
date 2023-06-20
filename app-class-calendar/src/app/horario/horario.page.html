@@ -4,6 +4,9 @@
     <ion-buttons slot="start" *ngIf="userType == 'tecnico'">
       <ion-menu-button class="teste" menu="main-menu"></ion-menu-button>
     </ion-buttons>
+    <ion-button slot="end" shape="round" (click)=" getAllDados ()">
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
