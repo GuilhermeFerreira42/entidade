@@ -28,6 +28,7 @@ export class HomePage {
   public getAlldados(){
     this.service.getAllMonitoria(this.monitoriaType+'s').then(dados=>{
       this.items=dados;
+      console.log(dados);
     })
 
   }

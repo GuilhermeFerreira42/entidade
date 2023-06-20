@@ -1,18 +1,18 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-title class="ion-text-center">ClassCalendar</ion-title>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start" *ngIf="userType == 'tecnico'">
-      <ion-menu-button class="teste" menu="main-menu"></ion-menu-button>
+      <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
-    <ion-button slot="end" color="success" shape="round" (click)="getAlldados()">Atualizar</ion-button>
+    <ion-title class="ion-text-center">ClassCalendar</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <ion-grid *ngIf="userType == 'aluno'">
     <ng-container *ngIf="usuario"> 
       <ng-container *ngIf="items.length===0 || (todosMonitoriasIndisponiveis(items)&& items.length>0) || !verificarIdAluno(items,usuario)"> 
-      <h1>Não há agendamento ativo.
+        <h1>Bem vindo, {{usuario.nome}}</h1>
+        <h1>Não há agendamento ativo.
       </h1> 
       </ng-container> 
     </ng-container>
