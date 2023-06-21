@@ -4,7 +4,7 @@
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-center">ClassCalendar</ion-title>
-  <ion-button slot="end" shape="round" (click)="getAlldados()" *ngIf="userType == 'professor' || userType == 'aluno ' ">
+  <ion-button slot="end" shape="round" (click)="getAlldados()" *ngIf="'professor' || 'aluno ' ">
     <ion-icon name="refresh-outline"></ion-icon>
   </ion-button>
   </ion-toolbar>
