@@ -4,7 +4,7 @@
       <ion-menu-button  menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-center">ClassCalendar</ion-title>
-  <ion-button slot="end" shape="round" size="small" (click)="getAlldados()" *ngIf="'professor' || 'aluno ' ">
+  <ion-button slot="end" shape="round" size="small" (click)="getAlldados()" *ngIf="userType == 'professor ' || userType=='aluno'">
     <ion-icon name="refresh-outline"></ion-icon>
   </ion-button>
   </ion-toolbar>
@@ -35,7 +35,7 @@
             </div>
             <div class="div2">
               <ion-buttons>
-                <ion-button fill="solid" expand="block" shape="round"> {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
+                <ion-button fill="solid" expand="block" color="primary" shape="round"> {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
               </ion-buttons>
             </div>
             <p>materia:{{monitoria.horario.disciplina.materia}} </p>
@@ -62,13 +62,13 @@
               </div>
               <div class="div2" >
                 <ion-buttons>
-                  <ion-button fill="solid" expand="block" shape="round">{{ formatarHorario(monitoria.horario.horarioInicio) }}</ion-button>
+                  <ion-button fill="solid" expand="block" color="primary" shape="round">{{ formatarHorario(monitoria.horario.horarioInicio) }}</ion-button>
                 </ion-buttons>
               </div>
               <p>Matéria: {{ monitoria.horario.disciplina.materia }}</p>
               <div class="div">
                 <ion-button expand="block" (click)="atualizar(monitoria)" shape="round" color="success">Finalizar</ion-button>
-                <ion-button expand="block" (click)="openPopup(monitoria)" shape="round" color="warning">Feedback</ion-button>            
+                <ion-button expand="block" (click)="openPopup(monitoria)" shape="round" color="primary">Feedback</ion-button>            
               </div>          
             </ion-col>
           </ng-container>

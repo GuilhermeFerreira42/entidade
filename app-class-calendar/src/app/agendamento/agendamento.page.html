@@ -46,8 +46,8 @@
   
 </ion-content>
 
-<ion-footer [translucent]="true" class="navebar" *ngIf="userType == 'aluno'">
-  <ion-toolbar>
+<ion-footer [translucent]="true" *ngIf="userType == 'aluno'">
+  <ion-toolbar class="navebar" >
     <ion-row>
       <ion-col size="4" class="icones">
         <ion-icon (click)="goHome()" name="home"></ion-icon>

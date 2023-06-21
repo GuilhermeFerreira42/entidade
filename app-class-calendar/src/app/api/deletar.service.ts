@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class DeletarService {
 
   public host: string = 'http://localhost:8080/api/';
+  public host2: string = ''
   public options: any = { headers: new HttpHeaders({'Content-Type':'application/json;charset=UTF-8'})}
 
   constructor(private http: HttpClient) { }
@@ -23,7 +24,7 @@ export class DeletarService {
   }
 
   public deleteUsuarios(userGroup: any,id: any) {
-    this.atualizaHost(userGroup, id);
+    this.atualizaHost( userGroup, id );
     return new Promise((ret) => {
 
       // Requisição DELETE
@@ -34,20 +35,28 @@ export class DeletarService {
   }
 
 
-  public atualizaHost(userGroup: any, id: any) {
-    const userTypePath = '/' + userGroup;
-    const idPath = '/' + id;
+  public atualizaHost(userGroup:any ,id:any ) {
+    const baseUrl = 'http://localhost:8080/api/';
 
-    if (!this.host.includes(userTypePath)) {
-      const lastSlashIndex = this.host.lastIndexOf('/');
-      const pathWithoutId = this.host.slice(0, lastSlashIndex);
-      this.host = pathWithoutId + userTypePath;
+    switch (userGroup) {
+      case 'aluno':
+        this.host = baseUrl + 'aluno/' + id;
+        break;
+      case 'professor':
+        this.host = baseUrl + 'professor/' + id;
+        break;
+      case 'tecnico':
+        this.host = baseUrl + 'tecnico/' + id;
+        break;
+      case 'disciplina':
+        this.host = baseUrl + 'disciplina/' + id;
+        break;
+      case 'horario':
+          this.host = baseUrl + 'horario/' + id;
+          break;
+      default:
+        this.host = baseUrl;
+        break;
     }
-
-    if (id && !this.host.endsWith(idPath)) {
-      // Remove todas as ocorrências de números seguidos de '/' no final do host
-      this.host = this.host.replace(/\/\d+(\/)?$/, '');
-      this.host += idPath;
-    }
-  } 
+  }
 }

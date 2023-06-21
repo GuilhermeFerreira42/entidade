@@ -23,13 +23,15 @@
 
 <ion-grid>
   <ion-row class="quadrado-grid">
-    <ion-col *ngFor="let aluno of itens; let ix = index" class="padding">
+    <ion-col *ngFor="let aluno of itens; let ix = index">
       <ion-item lines="none"  class="itemEstilo">
         <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
         <p>{{aluno.nome}}</p>
-        <ion-grid class="end">
-        <ion-button size="small" class="second-icon" (click)="irAlunoDetalhe(aluno)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
-        <ion-button size="small" color="danger" (click)="excluirAluno(aluno)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
+        <ion-grid>
+          <ion-buttons>
+        <ion-button  fill="solid" size="small" color="primary"(click)="irAlunoDetalhe(aluno)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
+        <ion-button  fill="solid" size="small" color="danger" (click)="excluirAluno(aluno)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
+      </ion-buttons>
       </ion-grid>
       </ion-item>
     </ion-col>

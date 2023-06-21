@@ -18,7 +18,10 @@ export class AlunoDetalhePage implements OnInit {
   telefoneAtt:any
   senhaAtt:any
   status: any
-  userType: any = 'aluno'
+  userGroup: any = 'aluno'
+  public userType: any;
+  public usuario: any;
+
 
   constructor(private route:ActivatedRoute,private atualizar:AtulizarService) { }
   
@@ -33,7 +36,7 @@ export class AlunoDetalhePage implements OnInit {
     senha:this.senhaAtt
     }
 
-    this.atualizar.putUsuario(newObj,this.userType).then(dados =>{
+    this.atualizar.putUsuario(newObj,this.userGroup).then(dados =>{
       console.log('Update');
       console.log(dados);
     })
@@ -42,6 +45,8 @@ export class AlunoDetalhePage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.aluno = params['aluno'];
+      this.usuario = params['usuario'];
+      this.userType = params['userType'];
       this.idAluno = this.aluno.idAluno;
       this.nomeAtt = this.aluno.nome;
       this.cpfAtt = this.aluno.cpf;

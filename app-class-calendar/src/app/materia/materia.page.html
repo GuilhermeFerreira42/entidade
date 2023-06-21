@@ -70,21 +70,23 @@
 
     <ion-row>
       <ion-col class="ion-text-center button">
-        <ion-button class="button" color="success" size="default" (click)="salvaHorario()" expand="full" type="submit"> Salvar </ion-button>
+        <ion-button class="button" color="primary" size="default" (click)="salvaHorario()" expand="full"> Salvar </ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row  class="horario">
       <ng-container *ngFor="let horario of itens; let ix = index">
         <ng-container *ngIf="horario.disciplina.idDisciplina === materia.idDisciplina">
           <ion-col size="6">
             <ion-item>
               <ion-col>Dia: {{horario.dia}}</ion-col>
               <ion-col>Mês: {{horario.mes}}</ion-col>
-              <ion-col>Horário Início: {{formatarHorario(horario.horarioInicio)}}</ion-col>
-              <ion-col>Horário Final: {{formatarHorario(horario.horarioFim)}}</ion-col>
-              <ion-button color="danger" size="small" (click)="excluirHorario(horario)">Excluir</ion-button>
             </ion-item>
+            <ion-item>
+              <ion-col>Início: {{formatarHorario(horario.horarioInicio)}}</ion-col>
+              <ion-col>Final: {{formatarHorario(horario.horarioFim)}}</ion-col>
+            </ion-item>
+            <ion-button color="danger" size="small" (click)="excluirHorario(horario)">Excluir</ion-button>
           </ion-col>
         </ng-container>
       </ng-container>

@@ -17,7 +17,9 @@ export class ProfessorDetalhePage implements OnInit {
   senhaAtt:any
   status: any
   idProfessor: any
-  userType: any = 'professor'
+  userGroup: any = 'professor'
+  public userType: any;
+  public usuario: any;
 
   constructor(private route:ActivatedRoute, private atualizar:AtulizarService) { }
 
@@ -32,7 +34,7 @@ export class ProfessorDetalhePage implements OnInit {
 
     }
 
-    this.atualizar.putUsuario(newObj,this.userType).then(dados => {
+    this.atualizar.putUsuario(newObj,this.userGroup).then(dados => {
       console.log('Upadate');
       console.log(dados);
     })
@@ -42,6 +44,8 @@ export class ProfessorDetalhePage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.professor = params['professor'];
+      this.usuario = params['usuario'];
+      this.userType = params['userType'];
       this.idProfessor = this.professor.idProfessor;
       this.nomeAtt = this.professor.nome;
       this.cpfAtt = this.professor.cpf;

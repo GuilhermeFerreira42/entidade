@@ -20,7 +20,7 @@ export class AlunoPage implements OnInit {
 
   public irAlunoDetalhe(aluno: any){
     this.NavCtrl.navigateForward('aluno-detalhe',{
-      queryParams: { aluno: aluno }
+      queryParams: { aluno: aluno, usuario: this.usuario, userType:this.userType}
     })
   }
   
