@@ -70,7 +70,7 @@
 
     <ion-row>
       <ion-col class="ion-text-center button">
-        <ion-button class="button" color="success" size="default" (click)="salvaHorario()" expand="full" type="submit"> Salvar </ion-button>
+        <ion-button class="button" color="primary" size="default" (click)="salvaHorario()" expand="full" type="submit"> Salvar </ion-button>
       </ion-col>
     </ion-row>
 
@@ -95,8 +95,8 @@
 
 </ion-content>
 
-<ion-footer [translucent]="true" class="navebar" *ngIf="userType == 'tecnico'">
-  <ion-toolbar>
+<ion-footer [translucent]="true" *ngIf="userType == 'tecnico'">
+  <ion-toolbar  class="navebar">
     <ion-row>
       <ion-col size="6" class="icones">
         <ion-icon (click)="goHome()" name="home"></ion-icon>

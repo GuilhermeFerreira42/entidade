@@ -33,11 +33,11 @@
               </div>
               <div class="div2">
                 <ion-buttons>
-                  <ion-button fill="solid" expand="block" shape="round">{{ formatarHorario(horario.horarioInicio) }}</ion-button>
+                  <ion-button fill="solid" expand="block" color="primary" shape="round">{{ formatarHorario(horario.horarioInicio) }}</ion-button>
                 </ion-buttons>
               </div>
               <p>Matéria: {{ horario.disciplina.materia }}</p>
-              <ion-button (click)="salvaAgendamento(horario)" color="success" *ngIf="horario.disponivel">Agendar</ion-button>
+              <ion-button (click)="salvaAgendamento(horario)" color="primary" *ngIf="horario.disponivel">Agendar</ion-button>
             </ion-col>         
           </ng-container>
       </ion-row>
