@@ -26,8 +26,12 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .header{
+    --background: linear-gradient(55deg, var(--ion-color-tertiary) 0%, var(--ion-color-primary) 100%);
+    overflow: hidden;
+    --overflow: hidden;
+    font-size: 30px;
     color: #ffffff;
-    --ion-background-color: #66008B;
+    text-align: center;
 }
 
 
@@ -50,10 +54,10 @@
 }
 
 .navebar {
+    --background: linear-gradient(55deg, var(--ion-color-tertiary) 0%, var(--ion-color-primary) 100%);
     font-size: 28px;
-    color: white;
+    color: #ffffff;
     text-align: center;
-    --ion-background-color:  #66008B;
     }
 
 .butao {

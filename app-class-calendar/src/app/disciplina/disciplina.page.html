@@ -1,18 +1,24 @@
-<ion-header [translucent]="true" class="header">
-  <ion-toolbar>
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-title>Disciplina</ion-title>
+    <ion-button size="small" slot="end" shape="round" (click)=" getAll()">
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-button>
     <ion-buttons slot="start" *ngIf="userType == 'tecnico'">
       <ion-back-button text="Voltar"></ion-back-button>
     </ion-buttons>
-    <ion-title class="titulo">Disciplina</ion-title>
-    <ion-button slot="end" shape="round" (click)=" getAll()">
-      <ion-icon name="refresh-outline"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">disciplina</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-grid>
-    <ion-item >
+
+    <ion-item>
       <ion-label>ID do Professor: {{ professor.idProfessor }}</ion-label>
       <ion-input  disabled></ion-input>
     </ion-item>
