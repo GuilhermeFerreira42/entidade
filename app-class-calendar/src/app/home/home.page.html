@@ -4,7 +4,7 @@
       <ion-menu-button  menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-center">ClassCalendar</ion-title>
-  <ion-button slot="end" shape="round" size="small" (click)="getAlldados()" *ngIf="userType == 'professor ' || userType=='aluno'">
+  <ion-button slot="end" shape="round" size="small" (click)="getAlldados()" *ngIf="userType == 'professor' || userType=='aluno'">
     <ion-icon name="refresh-outline"></ion-icon>
   </ion-button>
   </ion-toolbar>
@@ -33,9 +33,9 @@
                 professor:{{monitoria.horario.disciplina.professor.nome}}
               </p>
             </div>
-            <div class="div2">
+            <div class="div2 ion-items-center">
               <ion-buttons>
-                <ion-button fill="solid" expand="block" color="primary" shape="round"> {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
+                <ion-button class="ion-justify-content-center" fill="solid" expand="block" color="primary" shape="round"> {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
               </ion-buttons>
             </div>
             <p>materia:{{monitoria.horario.disciplina.materia}} </p>
@@ -61,7 +61,7 @@
                 <p>Aluno: {{ monitoria.aluno.nome }}</p>
               </div>
               <div class="div2" >
-                <ion-buttons>
+                <ion-buttons class="horario2">
                   <ion-button fill="solid" expand="block" color="primary" shape="round">{{ formatarHorario(monitoria.horario.horarioInicio) }}</ion-button>
                 </ion-buttons>
               </div>

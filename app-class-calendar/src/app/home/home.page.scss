@@ -161,13 +161,18 @@ ion-content.conteudo {
     display: grid;
     width: 80%;
     font-size: 0.9em;
-    width: 130px;
-    height: 300px;
+    width: 140px;
+    height: 330px;
   }
 
   .quadrado-grid ion-col .icone-perf {
     font-size: 115px;
   }
+  .horario2{
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 
 
