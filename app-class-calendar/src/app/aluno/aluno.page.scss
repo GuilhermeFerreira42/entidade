@@ -68,7 +68,8 @@ ion-content.conteudo {
     font-size: 0.9em;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
-
+    min-width: 90%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
 
     &:hover {
       transform: scale(1.1);
@@ -88,7 +89,8 @@ ion-content.conteudo {
   }
   p{
     font-family: "Lucida Console", "Courier New", monospace;
-    color:#000000
+    color:#000000;
+    text-align: left;
   }
 
 }
@@ -96,4 +98,8 @@ ion-content.conteudo {
 .itemEstilo{
   --ion-item-background: rgb(192, 192, 192);
   text-align: right;
+}
+
+.estilo{
+     min-width: 80px;
 }

@@ -21,10 +21,11 @@
 
     <ion-row>
       <ion-col>
-        <ion-label >
-          <ion-textarea label="NOME" [(ngModel)]="nomeAtt" labelPlacement="floating" fill="outline" placeholder="Digite seu nome"
-            type="text" id="nome" name="nome">
-          </ion-textarea>
+        <ion-label>
+          <ion-item class="tam" color="medium">
+            <ion-textarea label="NOME" [(ngModel)]="nomeAtt" labelPlacement="floating" placeholder="Digite seu nome"
+            type="text" id="nome" name="nome" ></ion-textarea>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -32,8 +33,10 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <ion-textarea label="CPF" [(ngModel)]="cpfAtt"  labelPlacement="floating" fill="outline" placeholder="Digite seu cpf"
+          <ion-item class="tam" color="medium">
+          <ion-textarea label="CPF" [(ngModel)]="cpfAtt"  labelPlacement="floating" placeholder="Digite seu cpf"
             maxlength="11" type="text" id="cpf" name="cpf"></ion-textarea>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -41,8 +44,10 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <ion-textarea label="TURMA" [(ngModel)]="turmaAtt"  labelPlacement="floating" fill="outline" placeholder="Digite sua Turma"
+          <ion-item class="tam" color="medium">
+          <ion-textarea label="TURMA" [(ngModel)]="turmaAtt"  labelPlacement="floating" placeholder="Digite sua Turma"
             type="text" id="turma" name="turma"></ion-textarea>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -50,8 +55,10 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <ion-textarea label="TELEFONE" [(ngModel)]="telefoneAtt"  labelPlacement="floating" fill="outline" placeholder="Digite seu telefone"
+          <ion-item class="tam" color="medium">
+          <ion-textarea label="TELEFONE" [(ngModel)]="telefoneAtt"  labelPlacement="floating" placeholder="Digite seu telefone"
             maxlength="11" type="number" id="telefone" name="telefone"></ion-textarea>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -59,8 +66,10 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <ion-textarea label="ENDEREÇO" [(ngModel)]="enderecoAtt"  labelPlacement="floating" fill="outline" placeholder="Digite seu endereço"
+          <ion-item class="tam" color="medium">
+          <ion-textarea label="ENDEREÇO" [(ngModel)]="enderecoAtt"  labelPlacement="floating" placeholder="Digite seu endereço"
             type="text" id="endereco" name="endereco"></ion-textarea>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>
@@ -68,8 +77,10 @@
     <ion-row>
       <ion-col>
         <ion-label>
-          <ion-input label="SENHA" [(ngModel)]="senhaAtt"  type="password" label-placement="floating" fill="outline"
+          <ion-item class="tam2" color="medium">
+          <ion-input label="SENHA" [(ngModel)]="senhaAtt"  type="password" label-placement="floating"
             placeholder="Digite sua senha" id="password" name="password"></ion-input>
+          </ion-item>
         </ion-label>
       </ion-col>
     </ion-row>

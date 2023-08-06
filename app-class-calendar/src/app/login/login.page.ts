@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AlertController, IonicModule, NavController } from '@ionic/angular';
 import { BuscaDadosService } from '../api/busca-dados.service';
+import { CadastroService } from '../api/cadastro.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,23 @@ import { BuscaDadosService } from '../api/busca-dados.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private service: BuscaDadosService, private alertController: AlertController, private navCtrl: NavController) { }
+  constructor(private service: BuscaDadosService,private servicePostUsuario:CadastroService, private alertController: AlertController, private navCtrl: NavController) { 
+    const padrao = {
+      nome: 'ADMIM',
+      endereco: 'CLASSCALENDAR',
+      senha: '1234',
+      telefone: '012345678912',
+      cpf: '1234',
+      status: true
+    };
+  }
 
+  userGroup: any = "tecnico ";
   userType : any;
   cpf : any;
   senha : any;
   users : any;
+  private admins:any = []; 
 
   public async getAllDados(){
     try {
@@ -77,11 +89,30 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  
 
-
-  ngOnInit() {
+   async ngOnInit() {
+     try {
+          this.admins = await this.service.getAllDados('tecnicos');
+        } catch (error) {
+          console.log('Erro ao obter os dados de ADMIMs:', error);
+        }
+    
+        // Verifica a existência de ADMIMs e cria um novo usuário se necessário.
+        if (!this.admins || this.admins.length === 0) {
+          const padrao = {
+            nome: 'ADMIM',
+            endereco: 'CLASSCALENDAR',
+            senha: '1234',
+            telefone: '012345678912',
+            cpf: '1234',
+            status: true
+          };
+    
+          this.servicePostUsuario.postUsuario(padrao, this.userGroup).then((newObj) => {
+            console.log(newObj);
+          });
+        }
+      }
+    
   }
-
-}
 

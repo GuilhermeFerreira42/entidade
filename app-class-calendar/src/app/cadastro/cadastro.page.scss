@@ -16,8 +16,9 @@ ion-content {
 
 .itemDesign {
     border-radius: 20px;
+    
   }
-
+   
 ion-row {
     margin-left: 4vw;
 
@@ -34,4 +35,17 @@ ion-title {
 
 .margem {
     margin-top: 40px;
+}
+
+.centraliza{
+    min-width: auto;
+    max-width: 600px;
+    margin: auto;
+}
+
+.btn{
+  justify-items: end;
+  margin: auto;
+  min-width: 100px;
+  max-width: 300px;
 }

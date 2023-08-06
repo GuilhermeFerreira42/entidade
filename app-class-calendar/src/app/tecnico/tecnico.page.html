@@ -24,15 +24,15 @@
 <ion-grid>
   <ion-row class="quadrado-grid">
     <ion-col *ngFor="let tecnico of itens; let ix = index">
+     <ion-grid >
+          <ion-buttons>
+        <ion-button  fill="solid" class="estilo" color="primary" (click)="irTecnicoDetalhe(tecnico)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
+        <ion-button  fill="solid" class="estilo" color="danger" (click)="deletarTecnico(tecnico)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
+      </ion-buttons>
+      </ion-grid>
       <ion-item lines="none" class="itemEstilo">
         <ion-icon name="person-circle-outline" class="icone-perf"></ion-icon>
         <p>{{tecnico.nome}}</p>
-        <ion-grid >
-          <ion-buttons>
-        <ion-button  fill="solid" size="small" color="primary" (click)="irTecnicoDetalhe(tecnico)"><ion-icon name="archive-outline"></ion-icon></ion-button> 
-        <ion-button  fill="solid" size="small" color="danger" (click)="deletarTecnico(tecnico)"><ion-icon name="alert-circle-outline"></ion-icon></ion-button> 
-      </ion-buttons>
-      </ion-grid>
       </ion-item>
     </ion-col>
   </ion-row>

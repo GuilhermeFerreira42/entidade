@@ -16,7 +16,6 @@ export class BuscaDadosService {
       this.http.get(this.host).subscribe(dados => {
 
         ret(dados);
-
       });
     })
   }

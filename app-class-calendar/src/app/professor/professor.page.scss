@@ -60,14 +60,17 @@ ion-content.conteudo {
     background-color: rgb(192, 192, 192);
     border-radius: 20px;
     color: black;
-    display: flex;
+    display: grid;
+    justify-items: center;
     flex-direction:column-reverse;
     align-items: left;
     justify-content: center;
-    height: 150px;
+    height:90%;
     font-size: 0.9em;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
+    min-width: 270px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
 
 
     &:hover {
@@ -88,18 +91,20 @@ ion-content.conteudo {
   }
   p{
     font-family: "Lucida Console", "Courier New", monospace;
-    color:#000000
-  }
- 
+    color:#000000;
+    text-align: left;
 
+  }
 }
 
 .itemEstilo{
   --ion-item-background: rgb(192, 192, 192);
   text-align: right;
+  display:grid;
+  justify-items: center;
 }
 
-.botao-add{
-  background-color: #66008B;
-  border-radius: 10px;
+.estilo{
+     min-width: 80px;
+     max-width: 100px;
 }

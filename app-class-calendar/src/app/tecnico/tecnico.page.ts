@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TecnicoPage implements OnInit {
 
   itens : any = []
+  lista:any = []
   public usuario: any
   public userType:any
   userGroup:any = 'tecnico'
@@ -33,14 +34,28 @@ export class TecnicoPage implements OnInit {
   
     await alert.present();
   }
+  async erroTecnico (){
+     const alert = await this.alertController.create({
+       header: 'Não é possível excluir o último usuário !',
+       buttons: ['OK']
+     });
+   
+     await alert.present();
+   }
 
   public async deletarTecnico(tecnico: any){
-    await this.exibirAlerta(tecnico.nome +' excluido, por favor, atualize a pagina');
-    this.excluirTecnico.deleteUsuarios(this.userGroup,tecnico.idTecnico).then((tecnico)=>{
-
-      console.log("delete")
-      this.getAllDados();
-    })
+     this.lista = await this.service.getAllDados('tecnicos');
+     if (this.lista.length>1){
+          await this.exibirAlerta(tecnico.nome +' excluido, por favor, atualize a pagina');
+          this.excluirTecnico.deleteUsuarios(this.userGroup,tecnico.idTecnico).then((tecnico)=>{
+      
+            console.log("delete")
+            this.getAllDados();
+          })
+     }
+     else{
+        this.erroTecnico()
+     }
   }
 
   public getAllDados () {
@@ -56,7 +71,8 @@ export class TecnicoPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.usuario = params['usuario'];
       this.userType = params['userType']});}
-
+          
+     
   goPerfil(){
     this.NavCtrl.navigateForward('perfil', {
       queryParams: { usuario: this.usuario,

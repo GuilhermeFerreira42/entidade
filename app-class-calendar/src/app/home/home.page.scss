@@ -93,20 +93,6 @@ ion-content.conteudo {
   padding: 15px;
  
   ion-col {
-    background-color: rgb(192, 192, 192);
-    border-radius: 20px;
-    color: black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 150px;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: all 0.3s ease-in-out;
-    width: 350px;
-
-
     &:hover {
       transform: scale(1.1);
     }
@@ -182,3 +168,33 @@ ion-toolbar {
   background-color: #5f007e;
 
 }
+
+.estilo{
+   display: grid;
+   --ion-item-background: rgb(192, 192, 192);
+   background-color: rgb(192, 192, 192);
+   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+   height: 65%;
+   border-radius: 40px;
+}
+#centro{
+     margin:  auto;
+     text-align: center;
+}
+#btn{
+     margin: 5px;
+     font-size: 13px;
+}
+
+@media screen and (min-width:750px) and (max-width:1280px){
+     .estilo{
+          width: 600px;
+     }
+     #centro{
+          font-size: larger;
+     }
+     #btn{
+          font-size: larger;
+     }
+ }
+ 

@@ -87,7 +87,8 @@ ion-content.conteudo {
     font-size: 0.9em;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
-    width: 350px;
+    min-width: 250px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6); 
 
 
     &:hover {

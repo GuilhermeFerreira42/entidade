@@ -21,28 +21,32 @@
       </ng-container> 
     </ng-container>
     
-    <ng-container *ngIf="usuario">
-      <ion-row class="quadrado-grid">
-        <ng-container *ngFor="let monitoria of items; let ix=index">
-          <ion-col size="12" *ngIf="usuario.idAluno===monitoria.aluno.idAluno&& monitoria.estado===true">
-            <div class="div">
-              <p>
-                dia:{{monitoria.horario.dia}}
-              </p>
-              <p>
-                professor:{{monitoria.horario.disciplina.professor.nome}}
-              </p>
-            </div>
-            <div class="div2 ion-items-center">
-              <ion-buttons>
-                <ion-button class="ion-justify-content-center" fill="solid" expand="block" color="primary" shape="round"> {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
-              </ion-buttons>
-            </div>
-            <p>materia:{{monitoria.horario.disciplina.materia}} </p>
-          </ion-col>
-        </ng-container>
-      </ion-row>
-    </ng-container>
+<ng-container *ngIf="usuario">
+     <ion-row class="quadrado-grid">
+          <ng-container *ngFor="let monitoria of items; let ix=index">
+               <ion-col size="12" *ngIf="usuario.idAluno===monitoria.aluno.idAluno&& monitoria.estado===true">
+                    <ion-list class="estilo">
+                         <ion-item id="centro" lines="none">
+                              dia:{{monitoria.horario.dia}}
+                              <br>
+                              <br>
+                              professor:{{monitoria.horario.disciplina.professor.nome}}
+                         </ion-item>
+                              <br>
+                         <ion-item id="centro" lines="none">
+                              <ion-buttons>
+                                   <ion-button class="ion-justify-content-center" fill="solid" expand="block"
+                                        color="primary" shape="round">
+                                        {{formatarHorario(monitoria.horario.horarioInicio)}} </ion-button>
+                              </ion-buttons>
+                         </ion-item>
+                         <ion-item  lines="none" id="centro">materia:{{monitoria.horario.disciplina.materia}}</ion-item>
+
+                    </ion-list>
+               </ion-col>
+          </ng-container>
+     </ion-row>
+</ng-container>
   </ion-grid>
 
   <ion-grid *ngIf="userType == 'professor'">
@@ -56,20 +60,32 @@
         <ion-row class="quadrado-grid">
           <ng-container *ngFor="let monitoria of items; let ix = index">
             <ion-col size="12" *ngIf="usuario.idProfessor === monitoria.horario.disciplina.professor.idProfessor && monitoria.estado === true">
-              <div class="div">
-                <p>Dia: {{ monitoria.horario.dia }}</p>
-                <p>Aluno: {{ monitoria.aluno.nome }}</p>
-              </div>
-              <div class="div2" >
-                <ion-buttons class="horario2">
-                  <ion-button fill="solid" expand="block" color="primary" shape="round">{{ formatarHorario(monitoria.horario.horarioInicio) }}</ion-button>
-                </ion-buttons>
-              </div>
-              <p>Matéria: {{ monitoria.horario.disciplina.materia }}</p>
-              <div class="div">
-                <ion-button expand="block" (click)="atualizar(monitoria)" shape="round" color="success">Finalizar</ion-button>
-                <ion-button expand="block" (click)="openPopup(monitoria)" shape="round" color="primary">Feedback</ion-button>            
-              </div>          
+              <ion-list class="estilo">
+
+               <ion-item lines="none" id="centro">
+                    Dia: {{ monitoria.horario.dia }}
+                    <br>
+                    Aluno: {{ monitoria.aluno.nome }}
+               </ion-item>
+                    <br>
+               <ion-item lines="none" id="centro">
+                    <ion-buttons class="horario2">
+                         <ion-button fill="solid" expand="block" color="primary" shape="round">{{
+                              formatarHorario(monitoria.horario.horarioInicio) }}
+                         </ion-button>
+                    </ion-buttons>
+               </ion-item>
+
+               <ion-item lines="none" id="centro"><br>
+                    Matéria: {{ monitoria.horario.disciplina.materia}}
+               </ion-item>
+                    
+               <ion-item lines="none" id="centro">
+                    <ion-button id="btn" expand="block" (click)="atualizar(monitoria)" shape="round" color="success">Finalizar</ion-button>
+                <ion-button id="btn" expand="block" (click)="openPopup(monitoria)" shape="round" color="primary">Feedback</ion-button>        
+               </ion-item> 
+
+          </ion-list>      
             </ion-col>
           </ng-container>
         </ion-row>

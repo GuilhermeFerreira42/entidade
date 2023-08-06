@@ -61,6 +61,7 @@ export class HorarioPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.usuario = params['usuario'];
       this.userType = params['userType']});
+ 
   }
 
 }
